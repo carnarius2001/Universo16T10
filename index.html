@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+
+    <img width="200" height="100"src="logo.jpg"
+    
+    <p style="color: white;"> Dia 20/07/25</p>
+    <p style="color: white;"> Eu tive a ideía de criar uma história sobre um grupo de amigos investigando os misterios de uma seita antiga.</p>
+    
+    <p style="color: white;"> O grupo é formado por um lobisomen, extraterrestre e um demônio. Pretendo adicionar mais personagens.</p>
+   
+   <style>
+    .aba {
+      display: none; /* Começa escondida */
+      padding: 20px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+    }
+
+    .ativo {
+      display: block; /* Mostra quando tiver essa classe */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botão que ativa a aba -->
+  <button onclick="mostrarOuEsconder()"> O lobisomen</button>
+
+  <!-- A aba -->
+  <div id="minhaAba" class="aba">
+    <p style="color: white;"> Ele existe a muito tempo, talvez ele tenha prescenciado até mesmo a própia babilônia.</p>
+    <p style="color: white;"> Ele já teve muitos nomes, a maioria esquecida pelo tempo. Ele não se lembra de grande parte da sua vida. Após a maldição ele se tornou imortal.</p>
+  </div>
+
+  <!-- Script que faz o toggle -->
+  <script>
+    function mostrarOuEsconder() {
+      const aba = document.getElementById("minhaAba");
+
+      if (aba.classList.contains("ativo")) {
+        aba.classList.remove("ativo"); // Se já estiver visível, esconde
+      } else {
+        aba.classList.add("ativo");    // Se estiver escondida, mostra
+      }
+    }
+  </script>
+ 
+
+</body>
+<style>
+body {background-color:black;}
+</body>
+</html>
