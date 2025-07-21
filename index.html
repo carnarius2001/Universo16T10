@@ -80,7 +80,32 @@
 <body>
 
   <!-- Botão para abrir a sidebar -->
-  <button class="open-btn" onclick="abrirSidebar()">☰</button>
+<button class="open-btn" onclick="toggleSidebar()">☰</button>
+  <script>
+  function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    const main = document.getElementById("main");
+    
+    if (sidebar.style.width === "250px") {
+      sidebar.style.width = "0";
+      main.style.marginLeft = "0";
+    } else {
+      sidebar.style.width = "250px";
+      main.style.marginLeft = "250px";
+    }
+  }
+
+  function fecharSidebar() {
+    document.getElementById("sidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+  }
+
+  function mostrarAba(id) {
+    const abas = document.querySelectorAll('.aba');
+    abas.forEach(aba => aba.classList.remove('ativo'));
+    document.getElementById(id).classList.add('ativo');
+  }
+</script>
 
   <!-- SIDEBAR -->
   <div id="sidebar" class="sidebar">
@@ -108,6 +133,7 @@
     <div id="lobo" class="aba">
       <h2>Lobisomem</h2>
       <p>O lobisomem é o mais velho do grupo, impulsivo e leal.</p>
+      
     </div>
 
     <div id="alien" class="aba">
