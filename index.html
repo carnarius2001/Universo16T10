@@ -7,11 +7,6 @@
   <style>
     body {
       background-color: black;
-      /* Se quiser usar uma imagem, descomente as linhas abaixo e comente o background-color */
-      /* background-image: url('fundo.jpg'); */
-      /* background-size: cover; */
-      /* background-repeat: no-repeat; */
-      /* background-position: center; */
     }
 
     .container {
@@ -25,6 +20,7 @@
       padding: 20px;
       border: 1px solid #ccc;
       margin-top: 10px;
+      color: white;
     }
 
     .ativo {
@@ -50,23 +46,31 @@
       O grupo é formado por um lobisomem, extraterrestre e um demônio. Pretendo adicionar mais personagens.
     </p>
 
-    <button onclick="mostrarOuEsconder()">O lobisomen</button>
+    <div class="menu">
+      <button onclick="mostrarOuEsconder('lobo')">O lobisomem</button>
+      <button onclick="mostrarOuEsconder('alien')">O extraterrestre</button>
+      <button onclick="mostrarOuEsconder('chifre')">O demônio</button>
+    </div>
 
-    <div id="minhaAba" class="aba">
-      <p style="color: white;">
-        Ele existe há muito tempo, talvez tenha presenciado até mesmo a própria Babilônia.
-      </p>
-      <p style="color: white;">
-        Ele já teve muitos nomes, a maioria esquecida pelo tempo. Ele não se lembra de grande parte da sua vida. Após a maldição, ele se tornou imortal.
-      </p>
+    <div id="lobo" class="aba">
+      <p>O lobisomem é o mais impulsivo do grupo, mas também o mais leal.</p>
+    </div>
+
+    <div id="alien" class="aba">
+      <p>O extraterrestre usa tecnologia avançada para investigar as anomalias da seita.</p>
+    </div>
+
+    <div id="chifre" class="aba">
+      <p>O demônio é enigmático, mas tem acesso a segredos sobrenaturais do submundo.</p>
     </div>
   </div>
 
   <script>
-    function mostrarOuEsconder() {
-      const aba = document.getElementById("minhaAba");
-      aba.classList.toggle("ativo");
+    function mostrarOuEsconder(id) {
+      const aba = document.getElementById(id);
+      aba.classList.toggle('ativo');
     }
   </script>
+
 </body>
 </html>
