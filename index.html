@@ -1,74 +1,142 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Universo 16T10</title>
   <style>
     body {
+      margin: 0;
+      font-family: sans-serif;
       background-color: black;
+      color: white;
+    }
+
+    /* Sidebar oculta */
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+    }
+
+    /* Conteúdo da sidebar */
+    .sidebar img {
+      width: 80%;
+      margin: 10px auto;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .sidebar button {
+      padding: 10px 20px;
+      width: 100%;
+      background: none;
+      border: none;
+      color: white;
+      text-align: left;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .sidebar button:hover {
+      background-color: #333;
+    }
+
+    /* Botão de abrir */
+    .open-btn {
+      font-size: 12px;
+      background-color: #111;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 2;
     }
 
     .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
+      padding: 30px;
+      margin-left: 0;
+      transition: margin-left 0.3s;
     }
 
     .aba {
       display: none;
-      padding: 20px;
-      border: 1px solid #ccc;
-      margin-top: 10px;
-      color: white;
     }
 
     .ativo {
       display: block;
     }
-
-    @media (max-width: 768px) {
-      .container {
-        width: 95%;
-      }
-    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img width="200" height="100" src="logo.jpg" alt="Logo">
 
-    <p style="color: white;">Dia 20/07/25</p>
-    <p style="color: white;">
-      Eu tive a ideia de criar uma história sobre um grupo de amigos investigando os mistérios de uma seita antiga.
-    </p>
-    <p style="color: white;">
-      O grupo é formado por um lobisomem, extraterrestre e um demônio. Pretendo adicionar mais personagens.
-    </p>
+  <!-- Botão para abrir a sidebar -->
+  <button class="open-btn" onclick="abrirSidebar()">☰</button>
 
-    <div class="menu">
-      <button onclick="mostrarOuEsconder('lobo')">O lobisomem</button>
-      <button onclick="mostrarOuEsconder('alien')">O extraterrestre</button>
-      <button onclick="mostrarOuEsconder('chifre')">O demônio</button>
+  <!-- SIDEBAR -->
+  <div id="sidebar" class="sidebar">
+    <img src="logo.jpg" alt="Logo">
+    <button onclick="mostrarAba('inicio'); fecharSidebar()">Início</button>
+    <button disabled style="color:#888;">-- História dos personagens --</button>
+    <button onclick="mostrarAba('lobo'); fecharSidebar()">Lobo</button>
+    <button onclick="mostrarAba('alien'); fecharSidebar()">Alien</button>
+    <button onclick="mostrarAba('chifre'); fecharSidebar()">Demônio</button>
+  </div>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <div id="main" class="container">
+    <div id="inicio" class="aba ativo">
+      <h2>Bem-vindo ao Universo 16T10</h2>
+      <p>Dia 20/07/25</p>
+      <p>
+        Eu tive a ideia de criar uma história sobre um grupo de amigos investigando os mistérios de uma seita antiga.
+      </p>
+      <p>
+        O grupo é formado por um lobisomem, extraterrestre e um demônio. Pretendo adicionar mais personagens.
+      </p>
     </div>
 
     <div id="lobo" class="aba">
-      <p>O lobisomem é o mais impulsivo do grupo, mas também o mais leal.</p>
+      <h2>Lobisomem</h2>
+      <p>O lobisomem é o mais velho do grupo, impulsivo e leal.</p>
     </div>
 
     <div id="alien" class="aba">
-      <p>O extraterrestre usa tecnologia avançada para investigar as anomalias da seita.</p>
+      <h2>Extraterrestre</h2>
+      <p>O alien usa tecnologia avançada para investigar as anomalias da seita.</p>
     </div>
 
     <div id="chifre" class="aba">
+      <h2>Demônio</h2>
       <p>O demônio é enigmático, mas tem acesso a segredos sobrenaturais do submundo.</p>
     </div>
   </div>
 
+  <!-- SCRIPTS -->
   <script>
-    function mostrarOuEsconder(id) {
-      const aba = document.getElementById(id);
-      aba.classList.toggle('ativo');
+    function abrirSidebar() {
+      document.getElementById("sidebar").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    function fecharSidebar() {
+      document.getElementById("sidebar").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0";
+    }
+
+    function mostrarAba(id) {
+      const abas = document.querySelectorAll('.aba');
+      abas.forEach(aba => aba.classList.remove('ativo'));
+      document.getElementById(id).classList.add('ativo');
     }
   </script>
 
