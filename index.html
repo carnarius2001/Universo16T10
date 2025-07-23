@@ -1,91 +1,161 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html><html lang="pt-br">
 <head>
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Universo 16T10</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: sans-serif;
+      font-family: 'Inter', sans-serif;
       background-color: black;
       color: white;
-    }
+      line-height: 1.6em;
+    }.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.3s;
+  padding-top: 60px;
+  z-index: 10;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
 
-    /* Sidebar oculta */
-    .sidebar {
-      height: 100%;
-      width: 0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background-color: #111;
-      overflow-x: hidden;
-      transition: 0.3s;
-      padding-top: 60px;
-    }
+.sidebar img {
+  width: 80%;
+  margin: 10px auto;
+  display: block;
+  border-radius: 10px;
+}
 
-    /* Conteúdo da sidebar */
-    .sidebar img {
-      width: 80%;
-      margin: 10px auto;
-      display: block;
-      border-radius: 10px;
-    }
+.sidebar button {
+  padding: 10px 20px;
+  width: 100%;
+  background: none;
+  border: none;
+  color: white;
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+}
 
-    .sidebar button {
-      padding: 10px 20px;
-      width: 100%;
-      background: none;
-      border: none;
-      color: white;
-      text-align: left;
-      font-size: 16px;
-      cursor: pointer;
-    }
+.sidebar button:hover {
+  background-color: #333;
+}
 
-    .sidebar button:hover {
-      background-color: #333;
-    }
+.open-btn {
+  font-size: 14px;
+  background-color: #111;
+  color: white;
+  opacity: 0.5; /* <-- essa linha deixa o botão todo mais transparente */
+  padding: 10px 16px;
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 20;
+  border-radius: 6px;
+  box-shadow: 1px 1px 5px #000;
+}
 
-    /* Botão de abrir */
-    .open-btn {
-      font-size: 12px;
-      background-color: #111;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      cursor: pointer;
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      z-index: 2;
-    }
+.container {
+  padding: 30px 40px;
+  margin-left: 0;
+  transition: margin-left 0.3s;
+  max-width: 800px;
+}
 
-    .container {
-      padding: 30px;
-      margin-left: 0;
-      transition: margin-left 0.3s;
-    }
+.aba {
+  display: none;
+}
 
-    .aba {
-      display: none;
-    }
+.ativo {
+  display: block;
+}
 
-    .ativo {
-      display: block;
-    }
+h1, h2 {
+  text-shadow: 1px 1px 2px #000;
+  color: #66ccff;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+  }
+
+  h2, h1 {
+    font-size: 1.3em;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  .open-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}
+
   </style>
 </head>
-<body>
+<body><button class="open-btn" onclick="toggleSidebar()">☰</button>
 
-  <!-- Botão para abrir a sidebar -->
-<button class="open-btn" onclick="toggleSidebar()">☰</button>
-  <script>
+<div id="sidebar" class="sidebar">
+  <img src="logo02.jpg" alt="Logo">
+  <button onclick="mostrarAba('inicio'); fecharSidebar()">Início</button>
+  <button disabled style="color:#888;">-- História dos personagens --</button>
+  <button onclick="mostrarAba('lobo'); fecharSidebar()">O lobisomem</button>
+  <button onclick="mostrarAba('alien'); fecharSidebar()">O alien</button>
+  <button onclick="mostrarAba('chifre'); fecharSidebar()">O demônio</button>
+  <button disabled style="color:#888;">-- História do mundo --</button>
+  <button onclick="mostrarAba('porco'); fecharSidebar()">A seita</button>
+  <button onclick="mostrarAba('mente'); fecharSidebar()">A terra</button>
+</div><div id="main" class="container">
+  <div id="inicio" class="aba ativo">
+    <h2>Bem-vindo ao Universo 16T10</h2>
+    <p>Dia 20/07/25</p>
+    <p>Eu tive a ideia de criar uma história sobre um grupo de amigos investigando os mistérios de uma seita antiga.</p>
+    <p>O grupo é formado por um lobisomem, extraterrestre e um demônio. Pretendo adicionar mais personagens.</p>
+    <p>A história e os personagens são baseados em conversas sem nexo.</p>
+
+  </div>  <div id="lobo" class="aba">
+    <h2>Eskidam</h2>
+    <p>Eskidam é o mais velho do grupo. Tal longevidade vem com um grande custo: imortalidade e fome. Para sobreviver, ele precisa se alimentar de seres inteligentes.</p>
+    <p>Quanto maior a inteligência, melhor o sustento.</p>
+    <p>Seu passado é repleto de lacunas, como se estivesse em um grande nevoeiro espesso. De vez em quando as memórias vêm e vão.</p>
+    <p>Apenas um fragmento de memória persiste: a visão de um lugar, uma cidade — a antiga Suméria.</p>
+  </div>  <div id="alien" class="aba">
+    <h2>Sarili</h2>
+    <p>Sarili não é da Terra. Ele é um alien que fugiu de seu planeta natal, que estava prestes a ser destruído.</p>
+    <p>Como nunca havia pilotado uma nave antes, ficou vagando pelo espaço até chegar ao sistema solar.</p>
+    <p>Em pouco tempo, caiu na Terra, precisamente na América do Sul, matando acidentalmente um garoto.</p>
+    <p>Aproveitando-se da situação, ele se apossou do corpo e das memórias do garoto, passando a viver entre os humanos.</p>
+  </div>  <div id="chifre" class="aba">
+    <h2>Maklo</h2>
+    <p>Maklo vem do fogo. Sobrevivente de uma dimensão afundada em batalhas intermináveis, ele viu a esperança quando o grande cataclisma aconteceu.</p>
+    <p>Com vários seres e mundos interconectados, agora ele podia viver o que sempre quis: uma vida normal.</p>
+  </div>  <div id="porco" class="aba">
+    <h2>A seita</h2>
+    <p>Eles adoram o deus Carnarius.</p>
+  </div>  <div id="mente" class="aba">
+        <h1>História</h1>
+    <p>A história se passa em um mundo pós–pós-apocalíptico, onde diversas entidades coexistem simultaneamente: humanos, demônios, anjos, alienígenas, elementares e muitos outros. Todos compartilham o mesmo planeta — a Terra.</p>
+    <p>Os continentes mudaram drasticamente. Novas cidades se ergueram tanto sobre quanto abaixo da superfície. O clima se tornou totalmente instável, mas, apesar disso, a tecnologia continuou a avançar — ainda mais do que antes.</p>
+    <p>Só que claro, com tantas espécies e civilizações coexistindo, os recursos tornaram-se escassos. Para lidarem com essa nova realidade, uma nova organização foi fundada: <strong>B.R.U — Busca de Recurso Universal</strong>.</p>
+    <p>Com uma autoridade global, a B.R.U passou a atuar como exploradora, mineradora, diplomata e, quando necessário, um grande exército.</p>
+    <p>Ela vasculha infindáveis planetas e dimensões esquecidas. Buscando energia, material e alimento.</p>
+  </div>
+</div><script>
   function toggleSidebar() {
     const sidebar = document.getElementById("sidebar");
     const main = document.getElementById("main");
-    
     if (sidebar.style.width === "250px") {
       sidebar.style.width = "0";
       main.style.marginLeft = "0";
@@ -105,104 +175,56 @@
     abas.forEach(aba => aba.classList.remove('ativo'));
     document.getElementById(id).classList.add('ativo');
   }
+  <!-- ... Seu código anterior continua exatamente igual até o final do </script> ... -->
+
+<script>
+// === FUNÇÕES EXISTENTES (mantidas) ===
+function toggleSidebar() {
+  const sidebar = document.getElementById("sidebar");
+  const main = document.getElementById("main");
+  if (sidebar.style.width === "250px") {
+    sidebar.style.width = "0";
+    main.style.marginLeft = "0";
+  } else {
+    sidebar.style.width = "250px";
+    main.style.marginLeft = "250px";
+  }
+}
+
+function fecharSidebar() {
+  document.getElementById("sidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+}
+
+function mostrarAba(id) {
+  const abas = document.querySelectorAll('.aba');
+  abas.forEach(aba => aba.classList.remove('ativo'));
+  document.getElementById(id).classList.add('ativo');
+}
+
+// === NOVAS FUNÇÕES JAVASCRIPT ===
+window.onload = () => {
+  // Botão voltar ao topo
+  const botaoTopo = document.createElement("button");
+  botaoTopo.innerText = "↑";
+  botaoTopo.style.position = "fixed";
+  botaoTopo.style.bottom = "20px";
+  botaoTopo.style.right = "20px";
+  botaoTopo.style.padding = "10px";
+  botaoTopo.style.background = "#111";
+  botaoTopo.style.color = "white";
+  botaoTopo.style.border = "none";
+  botaoTopo.style.borderRadius = "5px";
+  botaoTopo.style.cursor = "pointer";
+  botaoTopo.style.display = "none";
+  document.body.appendChild(botaoTopo);
+
+  botaoTopo.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.onscroll = () => {
+    botaoTopo.style.display = window.scrollY > 100 ? "block" : "none";
+  };
+
+};
 </script>
-
-  <!-- SIDEBAR -->
-  <div id="sidebar" class="sidebar">
-    <img src="logo02.jpg" alt="Logo">
-    <button onclick="mostrarAba('inicio'); fecharSidebar()">Início</button>
-    <button disabled style="color:#888;">-- História dos personagens --</button>
-    <button onclick="mostrarAba('lobo'); fecharSidebar()">O lobisomen</button>
-    <button onclick="mostrarAba('alien'); fecharSidebar()">O alien</button>
-    <button onclick="mostrarAba('chifre'); fecharSidebar()">O demônio</button>
-    <button disabled style="color:#888;">-- História do mundo --</button>
-        <button onclick="mostrarAba('porco'); fecharSidebar()">A seita</button>
-                <button oclick="mostrarAba('mente'); fecharSidebar()"> em breve</button>
-  </div>
-
-  <!-- CONTEÚDO PRINCIPAL -->
-  <div id="main" class="container">
-    <div id="inicio" class="aba ativo">
-      <h2>Bem-vindo ao Universo 16T10</h2>
-      <p>Dia 20/07/25</p>
-      <p>
-        Eu tive a ideia de criar uma história sobre um grupo de amigos investigando os mistérios de uma seita antiga.
-      </p>
-      <p>
-        O grupo é formado por um lobisomem, extraterrestre e um demônio. Pretendo adicionar mais personagens.
-        <p> A história e os personagens são baseados em conversas sem nexo.</p>
-        
-        <<a href="https://www.instagram.com/carnariusporcais?igsh=MTQxNDM1N21mbm95MA==">
-  <img width="60" height="60"src="instagram.jpg" alt="rapaz">
-</a>
-      </p>
-    </div>
-
-    <div id="lobo" class="aba">
-      <h2> Eskidam</h2>
-      <p>Eskidam é o mais velho do grupo.<p/>
-
-<p>Tal longevidade vem com um grande custo, imortalidade e fome. Para sobreviver, ele precisa se alimentar de seres inteligentes.</p>
-
-<p>Quanto maior a inteligência, melhor o sustento.</p>
-
-<p>passado é repleto de lacunas, como se estivesse em um grande nevoeiro espesso.De vez em quando as memórias vem e vão</p> 
-
-<p>Apenas um fragmento de memória persiste,a visão de um lugar, uma cidade — a antiga suméria.</p>
-
-</p>
-      
-    </div>
-
-    <div id="alien" class="aba">
-      <h2>Sarili</h2>
-      <p>Sarili não é da Terra.
-Ele é um alien que fugiu de seu planeta natal, que estava prestes a ser destruído.</p>
-
-<p>Como nunca havia pilotado uma nave antes, ficou vagando pelo espaço até chegar ao sistema solar.</p>
-
-<p>Em pouco tempo, caiu na Terra, precisamente na América do Sul, matando acidentalmente um garoto.</p>
-
-<p>Aproveitando-se da situação, ele se apossou do corpo e das memórias do garoto, passando a viver entre os humanos.</p>
-
-    </div>
-
-    <div id="chifre" class="aba">
-      <h2>Maklo</h2>
-      <p>Maklo vem do fogo.
-sobrevivente de uma dimensão afundada em batalhas intermináveis, ele viu a esperança quando o grande cataclisma aconteceu.<p/>
-
-<p>Com vários seres e mundos interconetados, agora ele podia viver o que sempres quis, uma vida normal.
-</p>
-
-      
-    </div>
-     <div id="porco" class="aba">
-      <h2> A seita</h2>
-      <p>Eles adoram o deus carnarius</p>
-  </div>
-   <div id="mente" class="aba">
-      <h2>dicionário </h2>
-      <p> </p>
-  </div>
-
-  <!-- SCRIPTS -->
-  <script>
-    function abrirSidebar() {
-      document.getElementById("sidebar").style.width = "250px";
-      document.getElementById("main").style.marginLeft = "250px";
-    }
-
-    function fecharSidebar() {
-      document.getElementById("sidebar").style.width = "0";
-      document.getElementById("main").style.marginLeft = "0";
-    }
-
-    function mostrarAba(id) {
-      const abas = document.querySelectorAll('.aba');
-      abas.forEach(aba => aba.classList.remove('ativo'));
-      document.getElementById(id).classList.add('ativo');
-    }
-  </script>
-</body>
+</script></body>
 </html>
